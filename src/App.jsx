@@ -1,26 +1,42 @@
-import { useState } from 'react'
+import React from 'react'
+import Hero from './components/Hero'
+import SidebarChat from './components/SidebarChat'
+import CenterCharts from './components/CenterCharts'
+import RightSettings from './components/RightSettings'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen bg-white text-slate-900">
+      {/* Hero with Spline cover */}
+      <Hero />
+
+      {/* Studio Section */}
+      <section id="studio" className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="-mt-16 mb-6 rounded-2xl border border-slate-200 bg-white/80 shadow-xl ring-1 ring-black/5 backdrop-blur">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr] lg:grid-cols-[360px_minmax(0,1fr)_360px]">
+            {/* Left: AI Chat */}
+            <div className="hidden lg:block">
+              <SidebarChat />
+            </div>
+            {/* Center: Charts */}
+            <CenterCharts />
+            {/* Right: Settings */}
+            <div className="hidden lg:block">
+              <RightSettings />
+            </div>
+          </div>
+          {/* Mobile stacked panels */}
+          <div className="lg:hidden divide-y divide-slate-200">
+            <div className="py-4"><SidebarChat /></div>
+            <div className="py-4"><RightSettings /></div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="mx-auto max-w-7xl px-6 pb-12 text-center text-sm text-slate-500">
+        Built for strategy tinkerers. Not financial advice.
+      </footer>
     </div>
   )
 }
